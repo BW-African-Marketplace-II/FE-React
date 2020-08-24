@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BW-African-Marketplace-II/FE-React#readme",
   "dependencies": {
     "axios": "^0.20.0",
+    "react-router-dom": "^5.2.0",
     "styled-components": "^5.1.1",
     "yup": "^0.29.3"
   }
