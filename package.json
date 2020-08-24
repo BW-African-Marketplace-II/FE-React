@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/BW-African-Marketplace-II/FE-React/issues"
   },
-  "homepage": "https://github.com/BW-African-Marketplace-II/FE-React#readme"
+  "homepage": "https://github.com/BW-African-Marketplace-II/FE-React#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.3"
+  }
 }
