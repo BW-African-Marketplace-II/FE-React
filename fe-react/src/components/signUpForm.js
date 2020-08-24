@@ -9,12 +9,14 @@ const MainDiv = styled.div`
 `
 
 const FormDiv = styled.div`
-    background: #fff;
-    padding: 4em 4em 2em;
-    max-width: 400px;
-    margin: 50px auto 0;
-    box-shadow: 0 0 1em #222;
-    border-radius: 2px;
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    background: white;
+    border-radius: 500px;
+    border: 8px solid rgba(245,245,245, 0.5);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
 `
 
 const Header = styled.h1`
@@ -61,6 +63,9 @@ const formSchema = yup.object().shape({
         .string()
         .email("Must be a valid email address")
         .required("Email is a required field"),
+    location: yup
+        .string()
+        .required("Location is a required field"),
     password: yup
         .string()
         .min(5, "Password must be at least 5 characters")
@@ -68,7 +73,7 @@ const formSchema = yup.object().shape({
     terms: yup
         .boolean()
         .oneOf([true], "Please agree to the Terms of Service")
-        .required("You must accept the Terms of Service"),
+        .required("You must accept the Terms of Service")
 })
 
 // Form Function
@@ -80,6 +85,7 @@ function SignUpForm() {
     const [formState, setFormState] = useState({
         name: "",
         email: "",
+        location: "",
         password: "",
         terms: false
     });
@@ -95,6 +101,7 @@ useEffect(() => {
 const [errorState, setErrorState] = useState({
     name: "",
     email: "",
+    location: "",
     password: "",
     terms: ""
 });
@@ -147,7 +154,7 @@ return (
     <form onSubmit={formSubmit}>
     <FormDiv>
     <Header>
-            Sign Up
+            Create an Account
     </Header>
         <FormInputs>
         <label htmlFor="name">
@@ -176,6 +183,21 @@ return (
                 />
                 {errorState.email.length > 0 ? (
                     <p className="error">{errorState.email}</p>
+                ) : null}
+        </label>
+        </FormInputs>
+        <FormInputs>
+        <label htmlFor="location">
+            Location
+            <Inputs
+                type="text"
+                name="location"
+                id="location"
+                value={formState.location}
+                onChange={inputChange}
+                />
+                {errorState.location.length > 0 ? (
+                    <p className="error">{errorState.location}</p>
                 ) : null}
         </label>
         </FormInputs>
