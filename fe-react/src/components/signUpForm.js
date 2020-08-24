@@ -130,7 +130,7 @@ const inputChange = e => {
 };
 
 const formSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     axios
         .post("https://reqres.in/api/users", formState)
         .then(response => {
