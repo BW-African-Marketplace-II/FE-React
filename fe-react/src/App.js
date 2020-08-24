@@ -8,9 +8,9 @@ import ItemList from './components/ItemList'
 function App() {
   return (
     <div className="App">
-      <Link to="/signUp">Sign Up</Link>
+      <Link to="/login">Sign Up</Link>
       <Switch>
-        <Route exact path="/signUp"><SignUpForm /></Route>
+        <Route exact path="/login"><SignUpForm /></Route>
         <PrivateRoute exact path="/protected" component={ItemList} />
       </Switch>
       

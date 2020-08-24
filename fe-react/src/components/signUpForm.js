@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 
 const MainDiv = styled.div`
@@ -79,7 +81,7 @@ const formSchema = yup.object().shape({
 // Form Function
 
 function SignUpForm() {
-
+    const history = useHistory()
     const [userList, setUserList] = useState([]);
 
     const [formState, setFormState] = useState({
@@ -137,14 +139,18 @@ const inputChange = e => {
 };
 
 const formSubmit = e => {
-    // e.preventDefault();
-    axios
-        .post("https://reqres.in/api/users", formState)
+    e.preventDefault();
+    console.log('submitted')
+    axiosWithAuth()
+        .post("/friends", formState)
         .then(response => {
-            const apiReturn = response.data
-            console.log(response.data)
-            setUserList([...userList, apiReturn])
-            setFormState(formState)
+            console.log(response)
+            window.localStorage.setItem('token', response.data.payload)
+            history.push('/protected')
+            // const apiReturn = response.data
+            // console.log(response.data)
+            // setUserList([...userList, apiReturn])
+            // setFormState(formState)
         })
         .catch(err => console.log(err));
 };
