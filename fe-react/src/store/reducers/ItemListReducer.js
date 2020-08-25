@@ -1,7 +1,11 @@
 import {
 START_FETCHING,
 FETCH_SUCCESS,
-ADD_SUCCESS
+ADD_SUCCESS,
+ADD_ITEM,
+DELETE_ITEM, 
+DELETE_SUCCESS
+
 } from '../actions'
 
 const initialState = {
@@ -35,28 +39,25 @@ const initialState = {
                             ...state,
                             updated: true
                         }
-                        // case "ADD_FRIEND":
-                        //     return {
-                        //         ...state
-                        //     }
-                        // case "REMOVE":
-                        //     console.log(...state.data)
-                        //     return {
-                                
-                        //         ...state,
-                                
-                        //         data: state.data.filter(value => value.id !== action.payload),
-                                
-                        //         // updated: true,
-                        //         isFetching: true,
-                        //     }
-                        //     case "REMOVE_SUCCESS":
-                        //         return {
-                        //             ...state,
-                        //             // updated: true,
-                        //             // data: action.payload,
-                        //             isFetching: false,
-                        //         }
+                        case ADD_ITEM:
+                            return {
+                                ...state
+                            }
+                        case DELETE_ITEM:
+                            console.log(...state.data)
+                            return {
+                                ...state,
+                                data: state.data.filter(value => value.id !== action.payload),
+                                // updated: true,
+                                isFetching: true,
+                            }
+                            case DELETE_SUCCESS:
+                                return {
+                                    ...state,
+                                    // updated: true,
+                                    // data: action.payload,
+                                    isFetching: false,
+                                }
                         //         case "LOGIN_START":
                         //             return {
                         //                 ...state
