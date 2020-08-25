@@ -58,7 +58,7 @@ const Submit = styled.button`
 // Validation Using Yup
 
 const formSchema = yup.object().shape({
-    name: yup
+    username: yup
         .string()
         .required("Name is a required field"),
     email: yup
@@ -72,10 +72,10 @@ const formSchema = yup.object().shape({
         .string()
         .min(5, "Password must be at least 5 characters")
         .required("Must include a password"),
-    terms: yup
-        .boolean()
-        .oneOf([true], "Please agree to the Terms of Service")
-        .required("You must accept the Terms of Service")
+    // terms: yup
+    //     .boolean()
+    //     .oneOf([true], "Please agree to the Terms of Service")
+    //     .required("You must accept the Terms of Service")
 })
 
 // Form Function
@@ -85,11 +85,11 @@ function SignUpForm() {
     const [userList, setUserList] = useState([]);
 
     const [formState, setFormState] = useState({
-        name: "",
+        username: "",
         email: "",
         location: "",
         password: "",
-        terms: false
+        // terms: false
     });
 
 const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -101,11 +101,11 @@ useEffect(() => {
 }, [formState]);
 
 const [errorState, setErrorState] = useState({
-    name: "",
+    username: "",
     email: "",
     location: "",
     password: "",
-    terms: ""
+    // terms: ""
 });
 
 const validate = e => {
@@ -142,7 +142,7 @@ const formSubmit = e => {
     e.preventDefault();
     console.log('submitted')
     axiosWithAuth()
-        .post("/friends", formState)
+        .post("/users/register", formState)
         .then(response => {
             console.log(response)
             window.localStorage.setItem('token', response.data.payload)
@@ -163,17 +163,17 @@ return (
             Create an Account
     </Header>
         <FormInputs>
-        <label htmlFor="name">
+        <label htmlFor="username">
             Name
             <Inputs
                 type="text"
-                name="name"
-                id="name"
-                value={formState.name}
+                name="username"
+                id="username"
+                value={formState.username}
                 onChange={inputChange}
                 />
-                {errorState.name.length > 0 ? (
-                    <p className="error">{errorState.name}</p>
+                {errorState.username.length > 0 ? (
+                    <p className="error">{errorState.username}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -223,7 +223,7 @@ return (
         </label>
         </FormInputs>
         <FormInputs>
-        <label htmlFor="terms">
+        {/* <label htmlFor="terms">
                 <Inputs
                     type="checkbox"
                     id="terms"
@@ -235,7 +235,7 @@ return (
                     <p className="error">{errorState.terms}</p>
                 ) : null}
                 I agree to the Terms of Service
-            </label>
+            </label> */}
             </FormInputs>
             <div className="button-div">
         <button disabled={buttonDisabled}>Submit</button>

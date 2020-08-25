@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Link to="/login">Sign Up</Link>
+      <Link to='/protected'>list</Link>
       <Switch>
         <Route exact path="/login"><SignUpForm /></Route>
         <PrivateRoute exact path="/protected" component={ItemList} />
