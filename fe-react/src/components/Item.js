@@ -112,6 +112,8 @@ p {
 
 const Icons = styled.div`
 img {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 50px;
     transition: all 500ms ease; 
 position: relative;

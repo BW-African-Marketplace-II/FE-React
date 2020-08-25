@@ -179,7 +179,7 @@ return (
             Create an Account
     </Header>
         <FormInputs>
-<<<<<<< HEAD
+
         <label htmlFor="username">
             Name
             <Inputs
@@ -187,15 +187,6 @@ return (
                 name="username"
                 id="username"
                 value={formState.username}
-=======
-        <label htmlFor="name">
-            <Inputs
-                type="text"
-                placeholder="Name"
-                name="name"
-                id="name"
-                value={formState.name}
->>>>>>> 1b0e68077892654bd419f26e3c3d48434ceaa8cc
                 onChange={inputChange}
                 />
                 {errorState.username.length > 0 ? (
@@ -248,15 +239,12 @@ return (
                 ) : null}
         </label>
         </FormInputs>
-<<<<<<< HEAD
-        <FormInputs>
+        {/* <FormInputs> */}
         {/* <label htmlFor="terms">
                 <Inputs
-=======
         <Checkbox>
         <label htmlFor="terms">
                 <input
->>>>>>> 1b0e68077892654bd419f26e3c3d48434ceaa8cc
                     type="checkbox"
                     id="terms"
                     name="terms"
@@ -266,19 +254,16 @@ return (
                 {errorState.terms.length > 0 ? (
                     <p className="error">{errorState.terms}</p>
                 ) : null}
-<<<<<<< HEAD
                 I agree to the Terms of Service
             </label> */}
-            </FormInputs>
-=======
-                   I agree to the Terms of Service
-            </label>
+            {/* </FormInputs> */}
+                   {/* I agree to the Terms of Service
+            </label> */}
  
->>>>>>> 1b0e68077892654bd419f26e3c3d48434ceaa8cc
             <div className="button-div">
         <Submit disabled={buttonDisabled}>Submit</Submit>
         </div>
-        </Checkbox>
+        {/* </Checkbox> */}
     </FormDiv>
     </form>
     </MainDiv>
