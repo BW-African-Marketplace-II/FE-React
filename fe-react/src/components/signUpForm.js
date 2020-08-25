@@ -5,52 +5,68 @@ import styled from 'styled-components'
 
 
 const MainDiv = styled.div`
-    
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 5%;
+    background: #EA8547;
+    border-radius: 30px;
+    box-shadow: 0 5px 20px rgba(131, 131, 131, 1);
 `
 
 const FormDiv = styled.div`
-    margin: 0 auto;
-    width: 500px;
-    height: 500px;
-    background: white;
-    border-radius: 500px;
-    border: 8px solid rgba(245,245,245, 0.5);
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
 `
 
 const Header = styled.h1`
-    margin:0 0 50px 0;
-    padding:10px;
-    text-align:center;
-    font-size:30px;
-    color:darken(#e5e5e5, 50%);
-    border-bottom:solid 1px #e5e5e5;
-`
-
-const SubHeader = styled.span`
-    display:block;
-    background: #F9A5A5;
-    padding: 2px 5px;
-    color: #666;
+    color: #342F2C;
+    margin-bottom: 3%;
+    text-align: center;
 `
 
 const FormInputs = styled.p`
-    margin: 0 0 3em 0;
-    position: relative;
+    font-size: $font-size;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: white;
 `
 
 const Inputs = styled.input`
     display: block;
-    box-sizing: border-box;
     width: 100%;
-    outline: none;
-    margin:0;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+`
+
+const Checkbox = styled.p`
+text-align: center;
+    margin-top: 5%;
+    margin-bottom: 20%;
 `
 
 const Submit = styled.button`
-    background: $button;
-    box-shadow: 0 3px 0 0
+    display: block;
+    width: 100%;
+    padding: 20px;
+    outline: 0;
+    border: 0;
+    color: white;
+    margin-top: 5%;
+    background: #342F2C;
+    &: hover {
+        box-shadow: 0 0 5px #99bbff,
+                    0 0 5px #99bbff,
+                    0 0 15px #99bbff,
+                    0 0 25px #99bbff;
+    } 
 `
 
 // Validation Using Yup
@@ -158,9 +174,9 @@ return (
     </Header>
         <FormInputs>
         <label htmlFor="name">
-            Name
             <Inputs
                 type="text"
+                placeholder="Name"
                 name="name"
                 id="name"
                 value={formState.name}
@@ -173,9 +189,9 @@ return (
         </FormInputs>
         <FormInputs>
         <label htmlFor="email">
-            Email
             <Inputs
                 type="email"
+                placeholder="Email"
                 name="email"
                 id="email"
                 value={formState.email}
@@ -188,9 +204,9 @@ return (
         </FormInputs>
         <FormInputs>
         <label htmlFor="location">
-            Location
             <Inputs
                 type="text"
+                placeholder="Location"
                 name="location"
                 id="location"
                 value={formState.location}
@@ -203,9 +219,9 @@ return (
         </FormInputs>
         <FormInputs>
         <label htmlFor="password">
-            Password
             <Inputs
                 type="password"
+                placeholder="Password"
                 name="password"
                 id="password"
                 value={formState.password}
@@ -216,9 +232,9 @@ return (
                 ) : null}
         </label>
         </FormInputs>
-        <FormInputs>
+        <Checkbox>
         <label htmlFor="terms">
-                <Inputs
+                <input
                     type="checkbox"
                     id="terms"
                     name="terms"
@@ -228,12 +244,13 @@ return (
                 {errorState.terms.length > 0 ? (
                     <p className="error">{errorState.terms}</p>
                 ) : null}
-                I agree to the Terms of Service
+                   I agree to the Terms of Service
             </label>
-            </FormInputs>
+ 
             <div className="button-div">
-        <button disabled={buttonDisabled}>Submit</button>
+        <Submit disabled={buttonDisabled}>Submit</Submit>
         </div>
+        </Checkbox>
     </FormDiv>
     </form>
     </MainDiv>

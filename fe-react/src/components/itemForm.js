@@ -22,37 +22,25 @@ const FormDiv = styled.div`
 `
 
 const Header = styled.h1`
-    margin:0 0 50px 0;
-    padding:10px;
-    text-align:center;
-    font-size:30px;
-    color:darken(#e5e5e5, 50%);
-    border-bottom:solid 1px #e5e5e5;
+    text-align: center;
+    margin-top: 70px;
+    font-size: 16px;
 `
 
 const SubHeader = styled.span`
-    display:block;
-    background: #F9A5A5;
-    padding: 2px 5px;
-    color: #666;
+    
 `
 
 const FormInputs = styled.p`
-    margin: 0 0 3em 0;
-    position: relative;
+    
 `
 
 const Inputs = styled.input`
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    outline: none;
-    margin:0;
+    
 `
 
 const Submit = styled.button`
-    background: $button;
-    box-shadow: 0 3px 0 0
+    
 `
 
 
@@ -137,27 +125,6 @@ const formSubmit = e => {
         .catch(err => console.log(err));
 };
 
-
-// ITEM UPLOAD TEST
-
-// const uploadedImage = React.useRef(null);
-//   const imageUploader = React.useRef(null);
-
-//   const handleImageUpload = e => {
-//     const [file] = e.target.files;
-//     if (file) {
-//       const reader = new FileReader();
-//       const { current } = uploadedImage;
-//       current.file = file;
-//       reader.onload = e => {
-//         current.src = e.target.result;
-//       };
-//       reader.readAsDataURL(file);
-//     }
-//   };
-
-// END 
-
 return (
     <MainDiv>
     <form onSubmit={formSubmit}>
@@ -166,43 +133,6 @@ return (
             List Your Item
     </Header>
    
-    {/* IMAGE UPLOAD TEST */}
-
-    {/* <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-        <label htmlFor="image">
-      <Inputs
-        type="file"
-        name="image"
-        id="image"
-        accept="image/*"
-        onChange={handleImageUpload}
-        ref={imageUploader}
-        style={{
-          display: "none"
-        }}
-      />
-      <div
-        style={{
-          height: "60px",
-          width: "60px",
-          border: "1px dashed black"
-        }}
-        onClick={() => imageUploader.current.click()}
-      >
-      </div>
-      </label>
-      Click to upload Image
-    </div> */}
-    
-    {/* END TEST */}
-
         <FormInputs>
         <label htmlFor="itemName">
             Item Name
