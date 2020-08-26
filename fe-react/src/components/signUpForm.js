@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components'
+import Anime, {anime} from 'react-anime';
 
 
 const MainDiv = styled.div`
@@ -92,6 +93,7 @@ const formSchema = yup.object().shape({
         .required("You must accept the Terms of Service")
 })
 
+
 // Form Function
 
 function SignUpForm() {
@@ -165,9 +167,15 @@ const formSubmit = e => {
         .catch(err => console.log(err));
 };
 
+
 return (
     <MainDiv>
     <form onSubmit={formSubmit}>
+        {/* STRETCH - ANIME */}
+
+    {/* <Anime opacity={[0, 1]} translateY={'1em'} delay={(e, i) => i * 1000}> */}
+    
+    {/* END STRETCH */}
     <FormDiv>
     <Header>
             Create an Account
@@ -252,6 +260,7 @@ return (
         </div>
         </Checkbox>
     </FormDiv>
+    {/* </Anime> */}
     </form>
     </MainDiv>
 );

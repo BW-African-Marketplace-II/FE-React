@@ -19,12 +19,15 @@ function ShoppingCart() {
 
     return (
         <div>
-            <CartCard
-                name={data.name}
-                price={data.price}
-                location={data.location}
-                description={data.description}
+            {data.map(item => (
+                <CartCard
+                name={item.name}
+                price={item.price}
+                location={item.location}
+                description={item.description}
             />
+            ))}
+            
         </div>
     )
 
