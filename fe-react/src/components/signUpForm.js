@@ -62,10 +62,10 @@ const Submit = styled.button`
     margin-top: 5%;
     background: #342F2C;
     &: hover {
-        box-shadow: 0 0 5px #99bbff,
-                    0 0 5px #99bbff,
-                    0 0 15px #99bbff,
-                    0 0 25px #99bbff;
+        box-shadow: 0 0 5px #ffffff,
+                    0 0 5px #ffffff,
+                    0 0 15px #ffffff,
+                    0 0 25px #ffffff;
     } 
 `
 
