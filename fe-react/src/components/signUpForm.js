@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { register } from '../store/actions'
+import { connect } from 'react-redux'
 
 
 const MainDiv = styled.div`
@@ -96,7 +98,7 @@ const formSchema = yup.object().shape({
 
 // Form Function
 
-function SignUpForm() {
+function SignUpForm(props) {
     const history = useHistory()
     const [userList, setUserList] = useState([]);
 
@@ -157,18 +159,24 @@ const inputChange = e => {
 const formSubmit = e => {
     e.preventDefault();
     console.log('submitted')
-    axiosWithAuth()
-        .post("/users/register", formState)
-        .then(response => {
-            console.log(response)
-            window.localStorage.setItem('token', response.data.payload)
-            history.push('/protected')
+    props.register(formState)
+    .then(res => {
+        history.push('/protected')
+    })
+    
+    
+    // axiosWithAuth()
+        // .post("/users/register", formState)
+        // .then(response => {
+        //     console.log(response)
+        //     window.localStorage.setItem('token', response.data.payload)
+        //     history.push('/protected')
             // const apiReturn = response.data
             // console.log(response.data)
             // setUserList([...userList, apiReturn])
             // setFormState(formState)
-        })
-        .catch(err => console.log(err));
+        // })
+        // .catch(err => console.log(err));
 };
 
 return (
@@ -272,4 +280,10 @@ return (
 
 };
 
-export default SignUpForm;
+const mapStateToProps = (state) => {
+    return {
+        data: state.LoginReducer.data
+    }
+}
+
+export default connect(mapStateToProps, { register })(SignUpForm);

@@ -26,7 +26,20 @@ export const fetchItem = () => dispatch => {
 export const login = (user) => (dispatch) => {
     dispatch({ type: LOGIN_START })
     return axiosWithAuth()
-    .post('/users', user)
+    .post('/users/login', user)
+    .then((res) => {
+        console.log(res.data)
+        localStorage.setItem("token", res.data.token)
+        
+    })
+    .catch((err) => 
+    dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message}))
+}
+
+export const register = (user) => (dispatch) => {
+    dispatch({ type: LOGIN_START })
+    return axiosWithAuth()
+    .post('/users/register', user)
     .then((res) => {
         console.log(res.data)
         localStorage.setItem("token", res.data.token)
