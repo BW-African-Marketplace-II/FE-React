@@ -19,7 +19,6 @@ export const fetchItem = () => dispatch => {
     axiosWithAuth()
     .get('/items')
     .then(res => {
-        console.log(res)
         dispatch({ type: FETCH_SUCCESS, payload: res.data})})
     .catch(err => console.log('errorz', err))
 }
@@ -27,8 +26,9 @@ export const fetchItem = () => dispatch => {
 export const login = (user) => (dispatch) => {
     dispatch({ type: LOGIN_START })
     return axiosWithAuth()
-    .post('/users/login', user)
+    .post('/users', user)
     .then((res) => {
+        console.log(res.data)
         localStorage.setItem("token", res.data.token)
         
     })

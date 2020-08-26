@@ -181,9 +181,10 @@ return (
         <FormInputs>
 
         <label htmlFor="username">
-            Name
+            
             <Inputs
                 type="text"
+                placeholder="name"
                 name="username"
                 id="username"
                 value={formState.username}

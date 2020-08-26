@@ -4,16 +4,32 @@ import { fetchItem } from '../store/actions'
 import Item from './Item'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 const ItemList = (props) => {
 console.log(props.data)
 useEffect(() => {
     props.fetchItem()
 }, [])
+
+function becomeSeller(e){
+    axiosWithAuth()
+        .put(`/users/becomeSeller`)
+        .then(res => {
+            console.log('become seller',res)
+            //const t = window.localStorage.getItem('token')
+            //console.log(t)
+            //window.localStorage.removeItem('token')
+        })
+        .catch(err => {
+            console.log('promote error', err)
+        })
+}
     return (
         <div>
             
             <Link to="/addItem"><button>add Item</button></Link>
+            <button onClick={becomeSeller}>become seller</button>
             items
             <Items>
             {props.data.map(item => 

@@ -19,6 +19,7 @@ const AddItem = (props) => {
     const handleSubmit = e => {
         e.preventDefault()
         props.addItem(formState)
+        push('/protected')
     }
     return (
         <div>
