@@ -181,6 +181,7 @@ const formSubmit = e => {
 
 return (
     <MainDiv>
+        <button>Already have an account?</button>
     <form onSubmit={formSubmit}>
     <FormDiv>
     <Header>
@@ -275,6 +276,7 @@ return (
         {/* </Checkbox> */}
     </FormDiv>
     </form>
+    
     </MainDiv>
 );
 

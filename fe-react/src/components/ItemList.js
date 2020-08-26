@@ -6,6 +6,9 @@ import { Link, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import SearchBar from '../SearchBar'
+import {SlideShow} from './SlideShow'
+import AwesomeSlider from 'react-awesome-slider';
+
 
 const ItemList = (props) => {
     const history = useHistory()
@@ -13,6 +16,9 @@ console.log(props.data)
 useEffect(() => {
     props.fetchItem()
 }, [])
+
+
+  
 
 function becomeSeller(e){
     axiosWithAuth()
@@ -27,14 +33,24 @@ function becomeSeller(e){
             console.log('promote error', err)
         })
 }
+
+// set local storage token to a variable maybe in useEffec
     return (
         
         <ItemListDiv>
+            <SlideShow/>
             <SearchBar/>
             <Image>
+
+            {/* {userToken === 'seller'
+            ?
+            <h3 onClick={() => history.push("/addItem")}>add Item</h3>
+            :
+            <h3 onClick={becomeSeller}>become seller</h3>
+            }
+             */}
             
-            
-            
+            {/* <SlideShow/> */}
             {/* <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" /> */}
             <div>
             
@@ -67,6 +83,7 @@ margin-left: 10%;
 const Image = styled.div`
 height: 400px;
 width: 900px;
+border-radius: 5px;
 background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
 background-position: center;
 background-repeat: no-repeat;

@@ -12,12 +12,55 @@ export const LOGIN_START = "LOGIN_START"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
 
+export const UPDATE_ITEM = "UPDATE_ITEM"
+export const UPDATE_ITEM_SUCCESS = "UPDATE_ITEM_SUCCESS"
+
+
+export const editItem = (item, id) => dispatch => {
+    console.log(item)
+    dispatch({ type: UPDATE_ITEM })
+    axiosWithAuth()
+    .put(`/items/${id}`, item)
+    .then(res => {
+        console.log(res.data)
+        dispatch({ type: UPDATE_ITEM_SUCCESS, payload: res.data})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+export const deleteItem = item => {
+    console.log(item)
+    console.log(item)
+    const removeItem = axiosWithAuth()
+    .delete(`/items/${item.id}`, item)
+    return (dispatch) => {
+        dispatch({type: DELETE_ITEM }).
+        then(({data}) => {
+            console.log(data)
+            dispatch({ type: DELETE_SUCCESS, payload: data})
+        })
+    }
+}
+
 
 export const fetchItem = () => dispatch => {
     
     dispatch({ type: START_FETCHING})
     axiosWithAuth()
     .get('/items')
+    .then(res => {
+        console.log(res.data)
+        dispatch({ type: FETCH_SUCCESS, payload: res.data})})
+    .catch(err => console.log('errorz', err))
+}
+
+export const fetchItemId = (item) => dispatch => {
+    console.log(item)
+    dispatch({ type: START_FETCHING})
+    axiosWithAuth()
+    .get(`/items/${item.id}`)
     .then(res => {
         dispatch({ type: FETCH_SUCCESS, payload: res.data})})
     .catch(err => console.log('errorz', err))
@@ -64,15 +107,4 @@ export const addItem = (item) => {
     }
 }
 
-export const deleteItem = item => {
-    console.log(item)
-    const removeItem = axiosWithAuth()
-    .delete(`/items/${item.id}`, item)
-    return (dispatch) => {
-        dispatch({type: DELETE_ITEM }).
-        then(({data}) => {
-            console.log(data)
-            dispatch({ type: DELETE_SUCCESS, payload: data})
-        })
-    }
-}
+

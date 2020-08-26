@@ -4,7 +4,9 @@ FETCH_SUCCESS,
 ADD_SUCCESS,
 ADD_ITEM,
 DELETE_ITEM, 
-DELETE_SUCCESS
+DELETE_SUCCESS,
+UPDATE_ITEM,
+UPDATE_ITEM_SUCCESS
 
 } from '../actions'
 
@@ -56,20 +58,22 @@ const initialState = {
                                     ...state,
                                     // updated: true,
                                     // data: action.payload,
+                                    data: [...action.payload.data],
                                     isFetching: false,
                                 }
-                        //         case "LOGIN_START":
-                        //             return {
-                        //                 ...state
-                        //             }
-                        //             case "LOGIN_SUCCESS":
-                        //                 return {
-                        //                     ...state,
-                        //                     data: action.payload
-                        //                 }
-                        //                 case "LOGIN_FAILURE":
-                        //                     return {...state}
-                          
+                                case UPDATE_ITEM:
+                                    return { 
+                                        ...state,
+                                        updated: true
+                                    }
+                                    case UPDATE_ITEM_SUCCESS:
+                                        console.log(action)
+                                        return {
+                                            ...state,
+                                            data: [...action.payload.data],
+                                            updated: false,
+                                        }
+               
             default:
                 return state
         }

@@ -9,6 +9,8 @@ import Test from './components/Test'
 import AddItem from './components/AddItem'
 import styled from 'styled-components'
 import Cart from './components/Cart'
+import UpdateItemForm from './components/UpdateItemForm'
+import ItemForm from './components/itemForm'
 
 function App() {
   const history = useHistory()
@@ -33,8 +35,9 @@ function App() {
         <Route exact path="/login"><SignUpForm /></Route>
         <Route exact path="/signIn"><SignInForm /></Route>
         <Route exact path="/test"><Test/></Route>
-        <Route exact path="/addItem"><AddItem/></Route>
+        <Route exact path="/addItem"><ItemForm/></Route>
         <Route exact path="/cart"><Cart/></Route>
+        <Route exact path="/updateItem/:id"><UpdateItemForm/></Route>
         <PrivateRoute exact path="/protected" component={ItemList} />
       </Switch>
       
