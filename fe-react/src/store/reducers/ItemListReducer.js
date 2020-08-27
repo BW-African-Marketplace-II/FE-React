@@ -50,13 +50,13 @@ const initialState = {
                             return {
                                 ...state,
                                 data: state.data.filter(value => value.id !== action.payload),
-                                // updated: true,
+                                updated: true,
                                 isFetching: true,
                             }
                             case DELETE_SUCCESS:
                                 return {
                                     ...state,
-                                    // updated: true,
+                                    updated: false,
                                     // data: action.payload,
                                     data: [...action.payload.data],
                                     isFetching: false,

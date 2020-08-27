@@ -40,6 +40,8 @@ export const deleteItem = item => {
         then(({data}) => {
             console.log(data)
             dispatch({ type: DELETE_SUCCESS, payload: data})
+            
+            // window.location.reload(false);
         })
     }
 }
@@ -93,6 +95,7 @@ export const register = (user) => (dispatch) => {
 }
 
 export const addItem = (item) => {
+    console.log(item)
     const newItem = axiosWithAuth()
     .post('/items', item)
     return (dispatch) => {

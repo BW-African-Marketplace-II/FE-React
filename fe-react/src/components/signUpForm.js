@@ -90,10 +90,7 @@ const formSchema = yup.object().shape({
         .string()
         .min(5, "Password must be at least 5 characters")
         .required("Must include a password"),
-    // terms: yup
-    //     .boolean()
-    //     .oneOf([true], "Please agree to the Terms of Service")
-    //     .required("You must accept the Terms of Service")
+   
 })
 
 // Form Function
@@ -107,7 +104,7 @@ function SignUpForm(props) {
         email: "",
         location: "",
         password: "",
-        // terms: false
+       
     });
 
 const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -123,7 +120,7 @@ const [errorState, setErrorState] = useState({
     email: "",
     location: "",
     password: "",
-    // terms: ""
+    
 });
 
 const validate = e => {
@@ -164,19 +161,6 @@ const formSubmit = e => {
         history.push('/protected')
     })
     
-    
-    // axiosWithAuth()
-        // .post("/users/register", formState)
-        // .then(response => {
-        //     console.log(response)
-        //     window.localStorage.setItem('token', response.data.payload)
-        //     history.push('/protected')
-            // const apiReturn = response.data
-            // console.log(response.data)
-            // setUserList([...userList, apiReturn])
-            // setFormState(formState)
-        // })
-        // .catch(err => console.log(err));
 };
 
 return (
@@ -249,31 +233,10 @@ return (
                 ) : null}
         </label>
         </FormInputs>
-        {/* <FormInputs> */}
-        {/* <label htmlFor="terms">
-                <Inputs
-        <Checkbox>
-        <label htmlFor="terms">
-                <input
-                    type="checkbox"
-                    id="terms"
-                    name="terms"
-                    checked={formState.terms}
-                    onChange={inputChange}
-                />
-                {errorState.terms.length > 0 ? (
-                    <p className="error">{errorState.terms}</p>
-                ) : null}
-                I agree to the Terms of Service
-            </label> */}
-            {/* </FormInputs> */}
-                   {/* I agree to the Terms of Service
-            </label> */}
- 
             <div className="button-div">
         <Submit disabled={buttonDisabled}>Submit</Submit>
         </div>
-        {/* </Checkbox> */}
+       
     </FormDiv>
     </form>
     

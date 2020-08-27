@@ -134,15 +134,6 @@ const formSubmit = e => {
         }
     })
     
-    // axios
-    //     .post("https://reqres.in/api/users", formState)
-    //     .then(response => {
-    //         const apiReturn = response.data
-    //         console.log(response.data)
-    //         setUserList([...userList, apiReturn])
-    //         setFormState(formState)
-    //     })
-    //     .catch(err => console.log(err));
 };
 
 return (

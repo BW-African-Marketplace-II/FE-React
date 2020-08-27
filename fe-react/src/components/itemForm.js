@@ -4,7 +4,9 @@ import axios from 'axios';
 import ImageUploader from 'react-images-upload';
 import styled from 'styled-components'
 import ItemCard from './itemCard'
-
+import { connect } from 'react-redux'
+import { addItem } from '../store/actions'
+import { useHistory } from 'react-router-dom'
 
 const MainDiv = styled.div`
     
@@ -45,28 +47,34 @@ const Submit = styled.button`
 
 
 const formSchema = yup.object().shape({
-    itemName: yup
+    name: yup
         .string()
         .required("Item name is required"),
     description: yup
         .string()
         .required("Item description is required"),
-    category: yup
+    location: yup
         .string()
-        .required("Item category is required")
+        .required("Item location is required"),
+        price: yup
+        .number()
+        .required("Item price is required")
 })
-
+{/* <p> */}
 // Form Function
 
-function ItemForm() {
-
+function ItemForm(props) {
+    console.log(props)
+    const { push } = useHistory()
     const [itemList, setItemList] = useState([]);
 
     const [formState, setFormState] = useState({
-        itemName: "",
+        name: "",
         description: "",
-        category: ""
+        location: "",
+        price: "",
     });
+    // itemName
 
 const [buttonDisabled, setButtonDisabled] = useState(true);
 
@@ -77,9 +85,10 @@ useEffect(() => {
 }, [formState]);
 
 const [errorState, setErrorState] = useState({
-        itemName: "",
+        name: "",
         description: "",
-        category: ""
+        location: "",
+        price: "",
 });
 
 const validate = e => {
@@ -113,16 +122,18 @@ const inputChange = e => {
 };
 
 const formSubmit = e => {
-    // e.preventDefault();
-    axios
-        .post("https://reqres.in/api/users", formState)
-        .then(response => {
-            const apiReturn = response.data
-            console.log(response.data)
-            setItemList([...itemList, apiReturn])
-            setFormState(formState)
-        })
-        .catch(err => console.log(err));
+    e.preventDefault();
+    props.addItem(formState)
+    push('/protected')
+    // axios
+    //     .post("https://reqres.in/api/users", formState)
+    //     .then(response => {
+    //         const apiReturn = response.data
+    //         console.log(response.data)
+    //         setItemList([...itemList, apiReturn])
+    //         setFormState(formState)
+    //     })
+    //     .catch(err => console.log(err));
 };
 
 return (
@@ -134,17 +145,17 @@ return (
     </Header>
    
         <FormInputs>
-        <label htmlFor="itemName">
+        <label htmlFor="name">
             Item Name
             <Inputs
-                type="itemName"
-                name="itemName"
-                id="itemName"
-                value={formState.itemName}
+                type="name"
+                name="name"
+                id="name"
+                value={formState.name}
                 onChange={inputChange}
                 />
-                {errorState.itemName.length > 0 ? (
-                    <p className="error">{errorState.itemName}</p>
+                {errorState.name.length > 0 ? (
+                    <p className="error">{errorState.name}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -166,17 +177,32 @@ return (
         </label>
         </FormInputs>
         <FormInputs>
-        <label htmlFor="category">
-            Item Category
+        <label htmlFor="location">
+            Item location
             <Inputs
-                type="category"
-                name="category"
-                id="category"
-                value={formState.category}
+                type="location"
+                name="location"
+                id="location"
+                value={formState.location}
                 onChange={inputChange}
             />
-            {errorState.category.length < 0 ? (
-                    <p className="error">{errorState.category}</p>
+            {errorState.location.length < 0 ? (
+                    <p className="error">{errorState.location}</p>
+                ) : null}
+        </label>
+        </FormInputs>
+        <FormInputs>
+        <label htmlFor="price">
+            Item price
+            <Inputs
+                type="price"
+                name="price"
+                id="price"
+                value={formState.price}
+                onChange={inputChange}
+            />
+            {errorState.price.length < 0 ? (
+                    <p className="error">{errorState.price}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -193,4 +219,9 @@ return (
 
 };
 
-export default ItemForm;
+const mapStateToProps = state => {
+    return {
+        addItem: state.addItem
+    }
+}
+export default connect(mapStateToProps, { addItem })(ItemForm)
