@@ -38,16 +38,16 @@ const Description = styled.div`
 `
 
 
-const CartCard = (props) => {
+const CartCard = ({name, price, location, description}) => {
 
     // console.log(props)
 
     return (
         <Cards>
-            <Name>{props.name}</Name>
-            <Price>${props.price}</Price>
-            <Location>{props.location}</Location>
-            <Description>{props.description}</Description>
+            <Name>{name}</Name>
+            <Price>${price}</Price>
+            <Location>{location}</Location>
+            <Description>{description}</Description>
         </Cards>
     )
 
