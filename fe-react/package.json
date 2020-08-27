@@ -9,6 +9,7 @@
     "axios": "^0.20.0",
     "infinite-react-carousel": "^1.2.11",
     "react": "^16.13.1",
+    "react-anime": "^3.0.3",
     "react-awesome-slider": "^4.1.0",
     "react-confirm-alert": "^2.6.1",
     "react-dom": "^16.13.1",

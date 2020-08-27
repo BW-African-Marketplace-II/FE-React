@@ -7,6 +7,7 @@ import ItemCard from './itemCard'
 import { connect } from 'react-redux'
 import { addItem } from '../store/actions'
 import { useHistory } from 'react-router-dom'
+// import { Error } from './signInForm'
 
 const MainDiv = styled.div`
     padding-top: 1%;
@@ -56,6 +57,7 @@ const TextInput = styled.textarea`
     display: block;
     width: 100%;
     height: 6rem;
+    outline: none;
 `
 
 const Submit = styled.button`
@@ -73,6 +75,12 @@ const Submit = styled.button`
                     0 0 15px #ffffff,
                     0 0 25px #ffffff;
     } 
+`
+
+export const Error = styled.p`
+
+    font-weight: bold;
+    color: black;
 `
 
 
@@ -190,16 +198,17 @@ return (
         </FormInputs> */}
         <FormInputs>
         <label htmlFor="name">
-            Item Name
+            
             <Inputs
                 type="name"
                 name="name"
                 id="name"
                 value={formState.name}
                 onChange={inputChange}
+                placeholder="Name"
                 />
                 {errorState.name.length > 0 ? (
-                    <p className="error">{errorState.name}</p>
+                    <Error>{errorState.name}</Error>
                 ) : null}
         </label>
         </FormInputs>
@@ -210,42 +219,45 @@ return (
                 type="description"
                 name="description"
                 id="description"
+               
                 placeholder="Please provide an item description"
                 value={formState.description}
                 onChange={inputChange}
             />
             {errorState.description.length < 0 ? (
-                    <p className="error">{errorState.description}</p>
+                    <Error>{errorState.description}</Error>
                 ) : null}
         </label>
         </FormInputs>
         <FormInputs>
         <label htmlFor="location">
-            Item location
+         
             <Inputs
                 type="location"
                 name="location"
                 id="location"
+                placeholder="Location"
                 value={formState.location}
                 onChange={inputChange}
             />
             {errorState.location.length < 0 ? (
-                    <p className="error">{errorState.location}</p>
+                    <Error>{errorState.location}</Error>
                 ) : null}
         </label>
         </FormInputs>
         <FormInputs>
         <label htmlFor="price">
-            Item price
+           
             <Inputs
                 type="price"
                 name="price"
                 id="price"
+                placeholder="price"
                 value={formState.price}
                 onChange={inputChange}
             />
             {errorState.price.length < 0 ? (
-                    <p className="error">{errorState.price}</p>
+                    <Error>{errorState.price}</Error>
                 ) : null}
         </label>
         </FormInputs>

@@ -7,20 +7,16 @@ import PrivateRoute from './utils/PrivateRoute'
 import ItemList from './components/ItemList'
 import AddItem from './components/AddItem'
 import styled from 'styled-components'
-import Cart from './components/Cart'
+import ShoppingCart from './components/shoppingCart'
 import UpdateItemForm from './components/UpdateItemForm'
 import ItemForm from './components/itemForm'
-<<<<<<< HEAD
 import {SlideShow} from'./components/SlideShow'
 import AwesomeSlider from 'react-awesome-slider';
-=======
-import ShoppingCart from './components/shoppingCart'
->>>>>>> d5b519182ad3225dda13501369b5312f17226820
+
 
 function App(props) {
   const history = useHistory()
   return (
-<<<<<<< HEAD
    <>
    
 <NavBar>   
@@ -41,7 +37,7 @@ function App(props) {
         <Route exact path="/login"><SignUpForm /></Route>
         <Route exact path="/signIn"><SignInForm /></Route>
         <Route exact path="/addItem"><ItemForm/></Route>
-        <Route exact path="/cart"><Cart/></Route>
+        <Route exact path="/cart"><ShoppingCart/></Route>
         <Route exact path="/updateItem/:id"><UpdateItemForm/></Route>
         <PrivateRoute exact path="/protected" component={ItemList} />
       </Switch>
@@ -49,17 +45,18 @@ function App(props) {
 
   
     </FullPage>
+    <Footer>
+
+    </Footer>
     </>
-=======
-    <div className="App">
-      {/* <SignUpForm /> */}
-      {/* <SignInForm /> */}
-      {/* <ItemForm /> */}
-      <ShoppingCart />
-    </div>
->>>>>>> d5b519182ad3225dda13501369b5312f17226820
-  );
+  
+  )
 }
+const Footer = styled.div`
+height: 50px;
+background-color: #EA8547;
+`
+
 const Image = styled.div`
 background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
 `
@@ -95,6 +92,8 @@ position: relative;
 img {
   border-left: 1px solid black;
   width: 50px;
+  transition: all 500ms ease; 
+position: relative;
 
   &:hover {
     -webkit-transform: scale(1.09);
@@ -111,6 +110,7 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 margin: 5px;
+min-height: 900px;
 
 `
 export default App;

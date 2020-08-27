@@ -2,15 +2,10 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components'
-<<<<<<< HEAD
 import { useHistory } from 'react-router-dom';
 import { login } from '../store/actions'
 import { connect } from 'react-redux'
 import { ToastsContainer, ToastsStore} from 'react-toasts'
-=======
-import Anime, {anime} from 'react-anime';
-
->>>>>>> d5b519182ad3225dda13501369b5312f17226820
 
 const MainDiv = styled.div`
     padding-top: 1%;
@@ -71,16 +66,27 @@ const Submit = styled.button`
     } 
 `
 
+export const Error = styled.p`
+
+    font-weight: bold;
+    color: black;
+
+`
+
 
 const formSchema = yup.object().shape({
     username: yup
         .string()
-        .min(3, "Must be a valid username")
+        .min(3, "Invalid Username")
         .required("username is a required field"),
     password: yup
         .string()
         .min(5, "Password must be at least 5 characters")
         .required("Must include a password"),
+        email: yup
+        .string()
+        .email(5, "Invalid Email")
+        .required("Must Have Email"),
 })
 
 // Form Function
@@ -92,6 +98,7 @@ function SignInForm(props) {
     const [formState, setFormState] = useState({
         username: "",
         password: "",
+        email: '',
     });
 
 const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -104,7 +111,8 @@ useEffect(() => {
 
 const [errorState, setErrorState] = useState({
     username: "",
-    password: ""
+    password: "",
+    email: '',
 });
 
 const validate = e => {
@@ -152,50 +160,52 @@ const formSubmit = e => {
 };
 
 return (
-    
     <MainDiv>
     <form onSubmit={formSubmit}>
-        {/* STRETCH - ANIME */}
-
-    {/* <Anime opacity={[0, 1]} translateY={'1em'} delay={(e, i) => i * 600}> */}
-    
-    {/* END STRETCH */}
     <FormDiv>
     <Header>
             Sign In
     </Header>
         <FormInputs>
-<<<<<<< HEAD
         <label htmlFor="username">
-            Username
+          
             <Inputs
                 type="username"
                 name="username"
                 id="username"
                 value={formState.username}
-=======
+                onChange={inputChange}
+                placeholder="Username"
+                />
+                {errorState.username.length > 0 ? (
+                    <Error>{errorState.username}</Error>
+                ) : null}
+        </label>
+        </FormInputs>
+        <FormInputs>
         <label htmlFor="email">
+          
             <Inputs
                 type="email"
-                placeholder="Please enter your email"
                 name="email"
                 id="email"
                 value={formState.email}
->>>>>>> d5b519182ad3225dda13501369b5312f17226820
                 onChange={inputChange}
+                placeholder="EMAIL"
                 />
-                {errorState.username.length > 0 ? (
-                    <p className="error">{errorState.username}</p>
+                {errorState.email.length > 0 ? (
+                    <Error>{errorState.email}</Error>
                 ) : null}
         </label>
         </FormInputs>
         <FormInputs>
         <label htmlFor="password">
+          
             <Inputs
                 type="password"
-                placeholder="Please enter your password"
                 name="password"
                 id="password"
+                placeholder="Password"
                 value={formState.password}
                 onChange={inputChange}
             />
@@ -208,7 +218,6 @@ return (
         <Submit disabled={buttonDisabled}>Submit</Submit>
         </div>
     </FormDiv>
-    {/* </Anime> */}
     </form>
     </MainDiv>
 );

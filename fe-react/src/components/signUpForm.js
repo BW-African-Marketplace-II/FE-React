@@ -71,6 +71,8 @@ const Submit = styled.button`
                     0 0 5px #ffffff,
                     0 0 15px #ffffff,
                     0 0 25px #ffffff;
+
+                   
     } 
 `
 
@@ -168,7 +170,7 @@ const formSubmit = e => {
 
 return (
     <MainDiv>
-        <button>Already have an account?</button>
+       
     <form onSubmit={formSubmit}>
         {/* STRETCH - ANIME */}
 
@@ -243,6 +245,7 @@ return (
         </FormInputs>
             <div className="button-div">
         <Submit disabled={buttonDisabled}>Submit</Submit>
+        <Submit onClick={() => history.push("/signIn")} >Already have an account?</Submit>
         </div>
        
     </FormDiv>

@@ -47,7 +47,7 @@ const ItemList = (props) => {
            if (props.isFetching) {
         return <Loader
          type="Puff"
-         color="#00BFFF"
+         color="#EA8547"
          height={100}
          width={100}
         />
@@ -178,7 +178,7 @@ p {
     justify-content: center;
     align-items: center;
     transition: all 500ms ease; 
- position: relative;
+    position: relative;
 
 
  
