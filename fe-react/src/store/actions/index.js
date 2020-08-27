@@ -32,7 +32,6 @@ export const editItem = (item, id) => dispatch => {
 
 export const deleteItem = item => {
     console.log(item)
-    console.log(item)
     const removeItem = axiosWithAuth()
     .delete(`/items/${item.id}`, item)
     return (dispatch) => {

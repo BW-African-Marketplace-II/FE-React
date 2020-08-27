@@ -53,7 +53,7 @@ const Item = (props) => {
         window.location.reload(false)
     }
 
-    const confirm = () => {
+     const confirm = () => {
         return(
         confirmAlert({
             title: 'Confirm to submit',

@@ -66,12 +66,7 @@ const Submit = styled.button`
     } 
 `
 
-export const Error = styled.p`
 
-    font-weight: bold;
-    color: black;
-
-`
 
 
 const formSchema = yup.object().shape({
@@ -178,7 +173,7 @@ return (
                 placeholder="Username"
                 />
                 {errorState.username.length > 0 ? (
-                    <Error>{errorState.username}</Error>
+                    <p className="error">{errorState.username}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -191,10 +186,10 @@ return (
                 id="email"
                 value={formState.email}
                 onChange={inputChange}
-                placeholder="EMAIL"
+                placeholder="Email"
                 />
                 {errorState.email.length > 0 ? (
-                    <Error>{errorState.email}</Error>
+                    <p className="error">{errorState.email}</p>
                 ) : null}
         </label>
         </FormInputs>

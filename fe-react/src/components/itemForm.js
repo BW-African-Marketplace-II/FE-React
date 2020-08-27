@@ -9,7 +9,7 @@ import { addItem } from '../store/actions'
 import { useHistory } from 'react-router-dom'
 // import { Error } from './signInForm'
 
-const MainDiv = styled.div`
+export const MainDiv = styled.div`
     padding-top: 1%;
     padding-bottom: 1%;
     margin-top: 5%;
@@ -21,26 +21,26 @@ const MainDiv = styled.div`
     box-shadow: 0 5px 20px rgba(131, 131, 131, 1);
 `
 
-const FormDiv = styled.div`
+export const FormDiv = styled.div`
     width: 90%;
     max-width: 340px;
     margin: 10vh auto;
 `
 
-const Header = styled.h1`
+export const Header = styled.h1`
     color: #342F2C;
     margin-bottom: 3%;
     text-align: center;
 `
 
-const FormInputs = styled.p`
+export const FormInputs = styled.p`
     font-size: $font-size;
     margin-bottom: -10px;
     font-weight: 500;
     color: white;
 `
 
-const Inputs = styled.input`
+export const Inputs = styled.input`
     display: block;
     margin-top: 5%;
     width: 100%;
@@ -53,14 +53,14 @@ const Inputs = styled.input`
     transition: 0.3s;
 `
 
-const TextInput = styled.textarea`
+export const TextInput = styled.textarea`
     display: block;
     width: 100%;
     height: 6rem;
     outline: none;
 `
 
-const Submit = styled.button`
+export const Submit = styled.button`
     display: block;
     width: 100%;
     padding: 20px;
@@ -77,11 +77,7 @@ const Submit = styled.button`
     } 
 `
 
-export const Error = styled.p`
 
-    font-weight: bold;
-    color: black;
-`
 
 
 const formSchema = yup.object().shape({
@@ -208,7 +204,7 @@ return (
                 placeholder="Name"
                 />
                 {errorState.name.length > 0 ? (
-                    <Error>{errorState.name}</Error>
+                    <p className="error">{errorState.name}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -225,7 +221,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.description.length < 0 ? (
-                    <Error>{errorState.description}</Error>
+                    <p className="error">{errorState.description}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -241,7 +237,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.location.length < 0 ? (
-                    <Error>{errorState.location}</Error>
+                    <p className="error">{errorState.location}</p>
                 ) : null}
         </label>
         </FormInputs>
@@ -257,7 +253,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.price.length < 0 ? (
-                    <Error>{errorState.price}</Error>
+                    <p className="error">{errorState.price}</p>
                 ) : null}
         </label>
         </FormInputs>

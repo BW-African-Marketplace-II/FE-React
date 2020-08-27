@@ -6,9 +6,10 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import SearchBar from '../SearchBar'
-import AwesomeSlider from 'react-awesome-slider';
 import Loader from 'react-loader-spinner'
-import {SlideShow} from './SlideShow'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 
 
 const ItemList = (props) => {
@@ -16,14 +17,33 @@ const ItemList = (props) => {
     const [search, setSearch] = useState('')
     const [filteredItem, setFilteredItem] = useState([])
 
+    const confirm = () => {
+        return(
+        confirmAlert({
+            title: 'Confirm to submit',
+            message: 'Are you sure to do this.',
+            buttons: [
+              {
+                label: 'Yes',
+                onClick: () => {
+                    becomeSeller();
+                    // refreshPage()
+                }
+              },
+              {
+                label: 'No',
+                onClick: () => alert('Click No')
+              }
+            ]
+          }))
+        
+}
+
 
     console.log(props.data)
     useEffect(() => {
     props.fetchItem()
     }, [])
-
-
-
 
     useEffect(() => {
         setFilteredItem(
@@ -32,7 +52,6 @@ const ItemList = (props) => {
         }))
     }, [search, props.data])
         
- 
 
     function becomeSeller(e){
         axiosWithAuth()
@@ -53,31 +72,15 @@ const ItemList = (props) => {
         />
     }
 
-    // const removeItem = () => {
-    //     return (
-    //         <div>
-    //             d
-    //         </div>
-    //     )
-    // }
-
-
     return (
         
         <ItemListDiv>
            <Buttons>
-            <p onClick={becomeSeller}>become seller</p>
+            <p onClick={confirm}>become seller</p>
             <h1>Shop Now!</h1>
             <p onClick={() => history.push("/addItem")}>add Item</p>
             </Buttons>
-            {/* <SlideShow/> */}
-            {/* <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" /> */}
-                
             <Image>
-                <div>
-                {/* <h3 onClick={becomeSeller}>become seller</h3> */}
-                {/* <h3 onClick={() => history.push("/addItem")}>add Item</h3> */}
-                </div>
             </Image>
             <div class="container">
                 <input
@@ -87,8 +90,6 @@ const ItemList = (props) => {
                 />
                 <div class="search"></div>
                 </div>
-            
-            
             <Items>
                 {filteredItem.map((item, index) => 
                 <Item key={index} {...item} item={item} name={item.name} price={item.price} location={item.location} description={item.description} />
@@ -151,13 +152,6 @@ justify-content: center;
 border-bottom: 5px solid #EA8547;
 margin-top: 35px;
 
-// img {
-//     object-fit: fill;
-//     height: 300px;
-//     width 900px;
-    
-//     object-fit: contain;
-// }
 
 h1 {
     font-size: 35px;
@@ -205,7 +199,7 @@ p {
     justify-content: center;
     align-items: center;
     transition: all 500ms ease; 
- position: relative;
+    position: relative;
 
 
  

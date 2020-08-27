@@ -3,6 +3,14 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchItemId, editItem } from '../store/actions'
+import {
+    MainDiv,
+    FormDiv, 
+    Header, 
+    FormInputs, 
+    Inputs, 
+    TextInput, 
+    Submit} from './itemForm'
 
 const initialItem = {
     name: '',
@@ -34,55 +42,64 @@ const UpdateItemForm = (props) => {
         }
 
     return (
-        <div>
+        <MainDiv>
             <form onSubmit={formSubmit}>
-                <div>
-                name:
-                <input
+                <FormDiv>
+                    <Header>
+                        Update Item
+                    </Header>
+                <FormInputs>
+                <label htmlFor="name">
+                <Inputs
                 type="text"
                 name="name"
                 onChange={changeHandler}
                 placeholder="name"
                 value={item.name}
                 />
-                </div>
+                </label>
+                </FormInputs>
 
-                <div>
-                price:
-                <input
+                <FormInputs>
+                <label htmlFor="price">
+                <Inputs
                 type="text"
                 name="price"
                 onChange={changeHandler}
                 placeholder="price"
                 value={item.price}
                 />
-                </div>
+                </label>
+                </FormInputs>
 
-                <div>
-                location:
-                <input
+                <FormInputs>
+                <label htmlFor="location">
+                <Inputs
                 type="text"
                 name="location"
                 onChange={changeHandler}
                 placeholder="location"
                 value={item.location}
                 />
-                </div>
+                </label>
+                </FormInputs>
 
-                <div>
-                description:
-                <input
+                <FormInputs>
+                <label htmlFor="description">
+                <Inputs
                 type="text"
                 name="description"
                 onChange={changeHandler}
-                placeholder="description"
+                placeholder={"description"}
                 value={item.description}
                 />
-                </div>
-                <button onClick={formSubmit}>update</button>
+                </label>
+                </FormInputs>
+                <Submit onClick={formSubmit}>update</Submit>
+                </FormDiv>
             </form>
 
-        </div>
+        </MainDiv>
     )
 }
 
@@ -94,3 +111,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {fetchItemId, editItem })(UpdateItemForm)
+
+
