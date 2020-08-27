@@ -16,5 +16,19 @@
   "bugs": {
     "url": "https://github.com/BW-African-Marketplace-II/FE-React/issues"
   },
-  "homepage": "https://github.com/BW-African-Marketplace-II/FE-React#readme"
+  "homepage": "https://github.com/BW-African-Marketplace-II/FE-React#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "lodash.chunk": "^4.2.0",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-alice-carousel": "^1.19.3",
+    "react-anime": "^3.0.3",
+    "react-dom": "^16.13.1",
+    "react-images-upload": "^1.2.8",
+    "react-router-dom": "^5.2.0",
+    "reactstrap": "^8.5.1",
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.3"
+  }
 }
