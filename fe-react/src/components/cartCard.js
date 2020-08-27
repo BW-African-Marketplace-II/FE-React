@@ -5,6 +5,9 @@ import {
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
 
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
+
 const Cards = styled.div`
   border: 2px solid black;
   background: rgb(164, 164, 165);
@@ -42,13 +45,15 @@ const CartCard = ({name, price, location, description}) => {
 
     // console.log(props)
 
+    const handleOnDragStart = (e) => e.preventDefault()
+
     return (
-        <Cards>
+        <AliceCarousel onDragStart={handleOnDragStart}>
             <Name>{name}</Name>
             <Price>${price}</Price>
             <Location>{location}</Location>
             <Description>{description}</Description>
-        </Cards>
+        </AliceCarousel>
     )
 
 }
