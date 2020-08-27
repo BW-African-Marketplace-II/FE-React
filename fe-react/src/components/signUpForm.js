@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { register } from '../store/actions'
 import { connect } from 'react-redux'
+import Anime, {anime} from 'react-anime';
 
 
 const MainDiv = styled.div`
@@ -66,10 +67,10 @@ const Submit = styled.button`
     margin-top: 5%;
     background: #342F2C;
     &: hover {
-        box-shadow: 0 0 5px #99bbff,
-                    0 0 5px #99bbff,
-                    0 0 15px #99bbff,
-                    0 0 25px #99bbff;
+        box-shadow: 0 0 5px #ffffff,
+                    0 0 5px #ffffff,
+                    0 0 15px #ffffff,
+                    0 0 25px #ffffff;
     } 
 `
 
@@ -92,6 +93,7 @@ const formSchema = yup.object().shape({
         .required("Must include a password"),
    
 })
+
 
 // Form Function
 
@@ -163,10 +165,16 @@ const formSubmit = e => {
     
 };
 
+
 return (
     <MainDiv>
         <button>Already have an account?</button>
     <form onSubmit={formSubmit}>
+        {/* STRETCH - ANIME */}
+
+    {/* <Anime opacity={[0, 1]} translateY={'1em'} delay={(e, i) => i * 1000}> */}
+    
+    {/* END STRETCH */}
     <FormDiv>
     <Header>
             Create an Account
@@ -238,6 +246,7 @@ return (
         </div>
        
     </FormDiv>
+    {/* </Anime> */}
     </form>
     
     </MainDiv>

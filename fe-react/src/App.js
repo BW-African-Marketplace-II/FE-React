@@ -10,12 +10,17 @@ import styled from 'styled-components'
 import Cart from './components/Cart'
 import UpdateItemForm from './components/UpdateItemForm'
 import ItemForm from './components/itemForm'
+<<<<<<< HEAD
 import {SlideShow} from'./components/SlideShow'
 import AwesomeSlider from 'react-awesome-slider';
+=======
+import ShoppingCart from './components/shoppingCart'
+>>>>>>> d5b519182ad3225dda13501369b5312f17226820
 
 function App(props) {
   const history = useHistory()
   return (
+<<<<<<< HEAD
    <>
    
 <NavBar>   
@@ -45,6 +50,14 @@ function App(props) {
   
     </FullPage>
     </>
+=======
+    <div className="App">
+      {/* <SignUpForm /> */}
+      {/* <SignInForm /> */}
+      {/* <ItemForm /> */}
+      <ShoppingCart />
+    </div>
+>>>>>>> d5b519182ad3225dda13501369b5312f17226820
   );
 }
 const Image = styled.div`
