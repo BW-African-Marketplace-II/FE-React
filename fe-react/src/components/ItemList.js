@@ -9,7 +9,7 @@ import SearchBar from '../SearchBar'
 import Loader from 'react-loader-spinner'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-
+import Title from './Title'
 
 
 const ItemList = (props) => {
@@ -77,7 +77,8 @@ const ItemList = (props) => {
         <ItemListDiv>
            <Buttons>
             <p onClick={confirm}>become seller</p>
-            <h1>Shop Now!</h1>
+            <Title/>
+            {/* <h1>Shop Now!</h1> */}
             <p onClick={() => history.push("/addItem")}>add Item</p>
             </Buttons>
             <Image>

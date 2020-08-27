@@ -7,6 +7,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { register } from '../store/actions'
 import { connect } from 'react-redux'
 import Anime, {anime} from 'react-anime';
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 
 
 const MainDiv = styled.div`
@@ -244,7 +245,8 @@ return (
         </label>
         </FormInputs>
             <div className="button-div">
-        <Submit disabled={buttonDisabled}>Submit</Submit>
+        <Submit disabled={buttonDisabled} onClick={() => ToastsStore.info(`Welcome ${formState.username}`)}>Submit</Submit>
+        <ToastsContainer store={ToastsStore}/>
         <Submit onClick={() => history.push("/signIn")} >Already have an account?</Submit>
         </div>
        

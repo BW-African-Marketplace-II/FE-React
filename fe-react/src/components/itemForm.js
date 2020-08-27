@@ -7,7 +7,7 @@ import ItemCard from './itemCard'
 import { connect } from 'react-redux'
 import { addItem } from '../store/actions'
 import { useHistory } from 'react-router-dom'
-// import { Error } from './signInForm'
+import { ToastsContainer, ToastsStore } from 'react-toasts';
 
 export const MainDiv = styled.div`
     padding-top: 1%;
@@ -162,15 +162,7 @@ const formSubmit = e => {
     e.preventDefault();
     props.addItem(formState)
     push('/protected')
-    // axios
-    //     .post("https://reqres.in/api/users", formState)
-    //     .then(response => {
-    //         const apiReturn = response.data
-    //         console.log(response.data)
-    //         setItemList([...itemList, apiReturn])
-    //         setFormState(formState)
-    //     })
-    //     .catch(err => console.log(err));
+
 };
 
 return (
@@ -181,17 +173,7 @@ return (
             List Your Item
     </Header>
    
-        {/* <FormInputs>
-        <label htmlFor="img_url">
-            <Inputs
-                type="text"
-                name="img_url"
-                id="img_url"
-                value={formState.img_url}
-                onChange={inputChange}
-            />
-        </label>
-        </FormInputs> */}
+
         <FormInputs>
         <label htmlFor="name">
             
@@ -258,7 +240,8 @@ return (
         </label>
         </FormInputs>
             <div className="button-div">
-        <Submit disabled={buttonDisabled}>Submit</Submit>
+        <Submit disabled={buttonDisabled} onClick={() => ToastsStore.info(`${formState.name} added`)}>Submit</Submit>
+        <ToastsContainer store={ToastsStore}/>
         </div>
     </FormDiv>
     </form>

@@ -210,7 +210,8 @@ return (
         </label>
         </FormInputs>
             <div className="button-div">
-        <Submit disabled={buttonDisabled}>Submit</Submit>
+        <Submit disabled={buttonDisabled} onClick={() => ToastsStore.info(`Welcome ${formState.username}`)}>Submit</Submit>
+        <ToastsContainer store={ToastsStore}/>
         </div>
     </FormDiv>
     </form>

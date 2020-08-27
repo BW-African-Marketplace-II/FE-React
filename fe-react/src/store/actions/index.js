@@ -16,6 +16,14 @@ export const UPDATE_ITEM = "UPDATE_ITEM"
 export const UPDATE_ITEM_SUCCESS = "UPDATE_ITEM_SUCCESS"
 
 
+// export const addCart = (name) => dispatch => {
+//     dispatch({ type: START_FETCHING})
+//     return {
+//         axiosWithAuth()
+//         .get()
+//     }
+// }
+
 export const editItem = (item, id) => dispatch => {
     console.log(item)
     dispatch({ type: UPDATE_ITEM })
@@ -108,5 +116,7 @@ export const addItem = (item) => {
         })
     }
 }
+
+
 
 
