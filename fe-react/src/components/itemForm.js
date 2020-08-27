@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import axios from 'axios';
-import ImageUploader from 'react-images-upload';
 import styled from 'styled-components'
 import ItemCard from './itemCard'
 import { connect } from 'react-redux'
