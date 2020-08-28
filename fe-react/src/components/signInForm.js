@@ -37,11 +37,17 @@ const FormInputs = styled.p`
     font-weight: 500;
     color: white;
 `
+const Errors = styled.p`
+    color: black;
+    font-weight: bold;
+    margin-top: 2%;
+`
 
 const Inputs = styled.input`
     display: block;
     width: 100%;
     padding: 20px;
+    margin-top: 5%;
     font-family: $font-family;
     -webkit-appearance: none;
     border: 0;
@@ -173,7 +179,7 @@ return (
                 placeholder="Username"
                 />
                 {errorState.username.length > 0 ? (
-                    <p className="error">{errorState.username}</p>
+                    <Errors>{errorState.username}</Errors>
                 ) : null}
         </label>
         </FormInputs>
@@ -189,7 +195,7 @@ return (
                 placeholder="Email"
                 />
                 {errorState.email.length > 0 ? (
-                    <p className="error">{errorState.email}</p>
+                    <Errors>{errorState.email}</Errors>
                 ) : null}
         </label>
         </FormInputs>
@@ -205,7 +211,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.password.length < 0 ? (
-                    <p className="error">{errorState.password}</p>
+                    <Errors>{errorState.password}</Errors>
                 ) : null}
         </label>
         </FormInputs>
