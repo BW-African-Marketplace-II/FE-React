@@ -52,6 +52,12 @@ export const Inputs = styled.input`
     transition: 0.3s;
 `
 
+const Errors = styled.p`
+    color: black;
+    font-weight: bold;
+    margin-top: 2%;
+`
+
 export const TextInput = styled.textarea`
     display: block;
     width: 100%;
@@ -185,7 +191,7 @@ return (
                 placeholder="Name"
                 />
                 {errorState.name.length > 0 ? (
-                    <p className="error">{errorState.name}</p>
+                    <Errors>{errorState.name}</Errors>
                 ) : null}
         </label>
         </FormInputs>
@@ -202,7 +208,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.description.length < 0 ? (
-                    <p className="error">{errorState.description}</p>
+                    <Errors>{errorState.description}</Errors>
                 ) : null}
         </label>
         </FormInputs>
@@ -218,7 +224,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.location.length < 0 ? (
-                    <p className="error">{errorState.location}</p>
+                    <Errors>{errorState.location}</Errors>
                 ) : null}
         </label>
         </FormInputs>
@@ -234,7 +240,7 @@ return (
                 onChange={inputChange}
             />
             {errorState.price.length < 0 ? (
-                    <p className="error">{errorState.price}</p>
+                    <Errors>{errorState.price}</Errors>
                 ) : null}
         </label>
         </FormInputs>
