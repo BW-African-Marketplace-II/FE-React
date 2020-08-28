@@ -75,14 +75,6 @@ const ItemList = (props) => {
     return (
         
         <ItemListDiv>
-           <Buttons>
-            <p onClick={confirm}>become seller</p>
-            <Title/>
-            {/* <h1>Shop Now!</h1> */}
-            <p onClick={() => history.push("/addItem")}>add Item</p>
-            </Buttons>
-            <Image>
-            </Image>
             <div class="container">
                 <input
                 type="text"
@@ -91,6 +83,15 @@ const ItemList = (props) => {
                 />
                 <div class="search"></div>
                 </div>
+           <Buttons>
+            <p onClick={confirm}>become seller</p>
+            <Title/>
+            {/* <h1>Shop Now!</h1> */}
+            <p onClick={() => history.push("/addItem")}>add Item</p>
+            </Buttons>
+            <Image>
+            </Image>
+            
             <Items>
                 {filteredItem.map((item, index) => 
                 <Item key={index} {...item} item={item} name={item.name} price={item.price} location={item.location} description={item.description} />
