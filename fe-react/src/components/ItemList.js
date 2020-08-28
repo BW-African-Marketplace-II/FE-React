@@ -75,14 +75,7 @@ const ItemList = (props) => {
     return (
         
         <ItemListDiv>
-            <div class="container">
-                <input
-                type="text"
-                placeholder="Search..." 
-                onChange={ e => setSearch(e.target.value)}
-                />
-                <div class="search"></div>
-                </div>
+            
            <Buttons>
             <p onClick={confirm}>become seller</p>
             <Title/>
@@ -93,6 +86,14 @@ const ItemList = (props) => {
             </Image>
             
             <Items>
+            <div class="container">
+                <input
+                type="text"
+                placeholder="Search..." 
+                onChange={ e => setSearch(e.target.value)}
+                />
+                <div class="search"></div>
+                </div>
                 {filteredItem.map((item, index) => 
                 <Item key={index} {...item} item={item} name={item.name} price={item.price} location={item.location} description={item.description} />
                 )}
