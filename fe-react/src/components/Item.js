@@ -88,14 +88,14 @@ const Item = (props) => {
 
 return (
     <div>
-        <ItemContainer onClick ={openModal}>
+        <ItemContainer className="itemContainer" onClick ={openModal}>
             <img src="https://images.unsplash.com/photo-1485110168560-69d4ac37b23e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
             
-            <PriceAndName>
+            <PriceAndName className="price">
                 <h3>{props.name}-</h3>
                 <h2>{props.price}$</h2>
             </PriceAndName>
-            <TextInfo> 
+            <TextInfo className="textinfo"> 
                 <h4>click for more info</h4>
             </TextInfo>
         </ItemContainer>
@@ -110,8 +110,8 @@ return (
         backdrop= 'static'
         keyboard= "false"
         >
-        <StyledModal>
-            <img src="https://images.unsplash.com/photo-1485110168560-69d4ac37b23e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"/>
+        <StyledModal className="modal">
+            <img className="imagez" src="https://images.unsplash.com/photo-1485110168560-69d4ac37b23e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"/>
             <h2>{props.name}</h2>
             <h2>{props.price}$</h2>
             <p>description: {props.description}</p>
@@ -140,7 +140,7 @@ export default connect(mapStateToProps, { deleteItem })(Item)
 
 
 const StyledModal = styled.div`
-color: black;
+color: white;
 border-radius: 15px;
 height: 400px;
 width: 400px;
@@ -148,13 +148,14 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+background-color: #EA8547;
 
 img {
     width: 100px;
     margin-left: 25px;
     margin-right: 25px;
     border-radius: 50%;
-    margin-top: 30px;
+    margin-top: 50px;
  
 }
 
@@ -167,6 +168,7 @@ p {
 `
 
 const Icons = styled.div`
+background-color: white;
 img {
     margin-top: 20px;
     margin-bottom: 20px;

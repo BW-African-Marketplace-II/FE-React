@@ -12,12 +12,17 @@ import ItemForm from './components/itemForm'
 import DropDown from './components/DropDown'
 
 
+
 function App(props) {
   const history = useHistory()
+ 
+
+ 
   return (
    <>
    
     <NavBar>   
+      
         <Link to='/protected'><p>Shop</p></Link>
         <Link to='/signIn'><nav>Sign In</nav></Link>
         <Link to="/login"><nav>Sign Up</nav></Link>
@@ -26,7 +31,7 @@ function App(props) {
     </NavBar>
      <Image>
      </Image>
-      <FullPage>
+      <FullPage className="navbar">
         <Switch>
           <Route exact path="/login"><SignUpForm /></Route>
           <Route exact path="/signIn"><SignInForm /></Route>

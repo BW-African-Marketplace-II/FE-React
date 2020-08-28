@@ -252,3 +252,62 @@ h1 {
   margin: 10rem auto;
   margin: calc(50vh - 5rem) auto;
 }
+
+.dark-mode {
+    color: #fff;
+    background-color: #313843;
+
+.navbar {
+    background-color: white;
+    border: none;
+  }
+
+  .button {
+      border: 5px solid black;
+      color: black;
+  }
+
+  .modal {
+      background-color: white;
+      color: black;
+  }
+
+  .background {
+      background-color: #EA8547;
+  }
+
+//   .page {
+//       co
+//   }
+}
+
+@media screen and (max-width: 500px){
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .background {
+        height: 50%;
+width: 50%;
+border-radius: 5px;
+background-image: url('https://images.unsplash.com/photo-1563789809738-47f96c3e273f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60');
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+    }
+// .itemContainer {
+//     max-width: 100px;
+// }
+// .imagez {
+//     max-width: 100px;
+// }
+// .price {
+
+// }
+// .textinfo {
+
+// }
+
+}

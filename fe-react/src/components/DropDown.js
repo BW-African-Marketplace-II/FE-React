@@ -4,16 +4,22 @@ import { Popup, List } from "semantic-ui-react";
 import { FiMoreVertical } from "react-icons/fi";
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
-
+import { darkMode, useDarkMode } from './LightMode'
 
 // import "./styles.css";
  const DropDown = () => {
     const history = useHistory()
+    const [darkMode, setDarkMode] = useDarkMode(false)
+
+    const toggleMode = e => {
+        e.preventDefault();
+        setDarkMode(!darkMode);
+      };
   const Menu1 = () => {
     return (
       <List divided relaxed link>
         <List.Item as="a"><Link to='/protected'><p>Shop</p></Link></List.Item>
-        <List.Item as="a"><Link to='/cart'><p>Cart</p></Link></List.Item>
+        <List.Item as="a"><p onClick={toggleMode} >Mode</p></List.Item>
         <List.Item as="a"><p onClick={() => history.push("/addItem")}>Add Item</p></List.Item>
         <List.Item as="a"><Link to="/signIn"> <nav onClick={()=>window.localStorage.removeItem('token')}>Log out</nav></Link></List.Item>
       </List>

@@ -75,17 +75,18 @@ const ItemList = (props) => {
     return (
         
         <ItemListDiv>
-            
-           <Buttons>
-            <p onClick={confirm}>become seller</p>
             <Title/>
+           <Buttons className="buttons">
+           
+            <p onClick={confirm}>become seller</p>
+            
             {/* <h1>Shop Now!</h1> */}
-            <p onClick={() => history.push("/addItem")}>add Item</p>
+            <p  className="button" onClick={() => history.push("/addItem")}>add Item</p>
             </Buttons>
-            <Image>
+            <Image className="background">
             </Image>
             
-            <Items>
+            <Items className="items">
             <div class="container">
                 <input
                 type="text"
@@ -115,6 +116,8 @@ export default connect(mapStateToProps, { fetchItem })(ItemList)
 
 const Buttons = styled.div`
 display: flex;
+
+
 `
 
 const Items = styled.div`
@@ -133,6 +136,7 @@ background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e
 background-position: center;
 background-repeat: no-repeat;
 background-attachment: fixed;
+background-color: black;
 
 
 
