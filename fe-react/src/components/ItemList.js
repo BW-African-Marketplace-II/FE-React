@@ -75,6 +75,7 @@ const ItemList = (props) => {
     return (
         
         <ItemListDiv>
+            
            <Buttons>
             <p onClick={confirm}>become seller</p>
             <Title/>
@@ -83,6 +84,8 @@ const ItemList = (props) => {
             </Buttons>
             <Image>
             </Image>
+            
+            <Items>
             <div class="container">
                 <input
                 type="text"
@@ -91,7 +94,6 @@ const ItemList = (props) => {
                 />
                 <div class="search"></div>
                 </div>
-            <Items>
                 {filteredItem.map((item, index) => 
                 <Item key={index} {...item} item={item} name={item.name} price={item.price} location={item.location} description={item.description} />
                 )}
